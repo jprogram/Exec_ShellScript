@@ -1,4 +1,16 @@
-
+######################################################################
+#																	 #
+#	OperacoesValores.sh - Script realiza operações aritmeticas       #
+#																	 #
+#	Autor: Jefferson Gomes (jeffersongomes81@gmail.com)				 #
+#	Data: 25/12/2019												 #
+#																	 #
+#	Descricao:														 #
+#       Script que realiza determinada operação escolhida pelo       #
+#		usuario, utilizando a estrutura case do Shell.				 #
+#                                                                    #
+#																	 #
+######################################################################
 
 
 #!/bin/bash
@@ -42,7 +54,21 @@ case $OPCAO in
 		;;
 		
 	4)
+		if [ $VALOR1 -eq 0 ] || [ $VALOR2 -eq 0 ]
+		then
+			echo -e "\n\tErro!!"
+			echo -e "\nNenhum dos valores informados podem ser iguais a zero!"
+			exit 1
+		fi
+		
+		RESTO=$(($VALOR1%$VALOR2))
 		DIVISAO=$(($VALOR1/$VALOR2))
+		
+		if [ $RESTO -ne 0 ]
+		then
+			echo -e "\nValor do Resto da Divisao: $RESTO"
+		fi
+		
 		echo -e "\nO Resultado da divisão dos valores: $DIVISAO"
 		;;
 		
@@ -53,5 +79,4 @@ case $OPCAO in
 	*)
 		echo -e "\nOpção Inválida!"
 		;;		
-	
 esac		
