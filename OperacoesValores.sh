@@ -15,6 +15,7 @@ echo -e "3 = Multiplicação"
 echo -e "4 = Divisão"
 echo -e "Q = Sair"
 
+echo ""
 read -p "Opção: " OPCAO
 
 case $OPCAO in
@@ -29,13 +30,20 @@ case $OPCAO in
 		;;
 		
 	3)
+		if [ $VALOR1 -eq 0 ] || [ $VALOR2 -eq 0 ]
+		then
+			echo -e "\n\tErro!!"
+			echo -e "\nNenhum dos valores informados podem ser iguais a zero!"
+			exit 1
+		fi
+		
 		MULTIPLICACAO=$(($VALOR1*$VALOR2))
-		echo -e "\nO Resultado da subtracao eh $MULTIPLICACAO"
+		echo -e "\nO Resultado da Multiplicação dos valores: $MULTIPLICACAO"
 		;;
 		
 	4)
 		DIVISAO=$(($VALOR1/$VALOR2))
-		echo -e "\nO Resultado da subtracao eh $DIVISAO"
+		echo -e "\nO Resultado da divisão dos valores: $DIVISAO"
 		;;
 		
 	Q | q)
